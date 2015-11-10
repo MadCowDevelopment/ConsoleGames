@@ -19,5 +19,20 @@ namespace Framework.Utils
             Console.SetCursorPosition(left, Console.CursorTop);
             Console.WriteLine(text);
         }
+
+        public static void WriteColor(ConsoleColor foreground, ConsoleColor background, string format,
+            params object[] args)
+        {
+            var previousForegroundColor = Console.ForegroundColor;
+            var previousBackgroundColor = Console.BackgroundColor;
+
+            Console.ForegroundColor = foreground;
+            Console.BackgroundColor = background;
+
+            Console.Write(format, args);
+
+            Console.ForegroundColor = previousForegroundColor;
+            Console.BackgroundColor = previousBackgroundColor;
+        }
     }
 }
